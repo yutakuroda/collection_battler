@@ -14,7 +14,8 @@
       </li>
     </ul>
 
-    <BattlerIconSet icon_title="持統天皇"/>
+    <!-- <BattlerIconSet icon_title="持統天皇"/> -->
+    <BattlerIconSet url="https://colbase.nich.go.jp/uploads/collection_item_images/thumbnail/3c044d87c6b4a243aff2b469d72c8495.jpg" icon_title="持統天皇"/>
  </div>
 </template>
 
@@ -34,6 +35,7 @@ export default {
     SearchButton,
     BattlerIconSet
   },
+<<<<<<< HEAD
   methods: {
     fetchCollections: function(){
       console.log('run methods');
@@ -56,5 +58,7 @@ export default {
       collections: {},
     }
   }
+=======
+>>>>>>> f415957e76aeedc20af1660e66de4c2daa46ab62
 }
 </script>
