@@ -11,8 +11,9 @@
     <ul id="v-for-object" class="demo">
       <li v-for="value in collections">
         <!-- {{ value }} -->
-        <!-- <BattlerIconSet url={{value.common.thumbnailUrl}} icon_title="ほげ"/> -->
-        <BattlerIconSet url="http://dl.ndl.go.jp/titleThumb/info:ndljp/pid/2540649" icon_title="ほげ"/>
+        <BattlerIconSet :url="value.common.thumbnailUrl" :icon_title="value.common.title" />
+        <!-- <p>{{value.common}}</p> -->
+        <!-- <BattlerIconSet url="http://dl.ndl.go.jp/titleThumb/info:ndljp/pid/2540649" icon_title="ほげ"/> -->
       </li>
     </ul>
 
@@ -39,8 +40,10 @@ export default {
   },
   methods: {
     fetchCollections: function(){
-      console.log('run methods');
-      fetch(encodeURI(`https://jpsearch.go.jp/api/item/search/jps-cross?f-contents=thumb&keyword=${this.search_text}`))
+      // const debugurl = `https://jpsearch.go.jp/api/item/search/jps-cross?f-contents=thumb&keyword=${this.search_text}`
+      // console.log(debugurl);
+      fetch(encodeURI(`https://jpsearch.go.jp/api/item/search/jps-cross?f-contents=thumb&fc-db=-dignl&keyword=${this.search_text}`))
+      // fetch(encodeURI(`https://jpsearch.go.jp/api/item/search/jps-cross?keyword=${this.search_text}`))
       .then( response => {
         return response.json()
       })
@@ -55,7 +58,7 @@ export default {
   },
   data() {
     return {
-      title_text: "",
+      search_text: "",
       collections: {},
     }
   }
