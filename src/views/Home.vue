@@ -10,12 +10,14 @@
     <ButtonGreen text="Go!"/>
     <ul id="v-for-object" class="demo">
       <li v-for="value in collections">
-        {{ value }}
+        <!-- {{ value }} -->
+        <!-- <BattlerIconSet url={{value.common.thumbnailUrl}} icon_title="ほげ"/> -->
+        <BattlerIconSet url="http://dl.ndl.go.jp/titleThumb/info:ndljp/pid/2540649" icon_title="ほげ"/>
       </li>
     </ul>
 
     <!-- <BattlerIconSet icon_title="持統天皇"/> -->
-    <BattlerIconSet url="https://colbase.nich.go.jp/uploads/collection_item_images/thumbnail/3c044d87c6b4a243aff2b469d72c8495.jpg" icon_title="持統天皇"/>
+    <!-- <BattlerIconSet url="https://colbase.nich.go.jp/uploads/collection_item_images/thumbnail/3c044d87c6b4a243aff2b469d72c8495.jpg" icon_title="持統天皇"/> -->
  </div>
 </template>
 
@@ -35,11 +37,10 @@ export default {
     SearchButton,
     BattlerIconSet
   },
-<<<<<<< HEAD
   methods: {
     fetchCollections: function(){
       console.log('run methods');
-      fetch(encodeURI(`https://jpsearch.go.jp/api/item/search/jps-cross?keyword=${this.search_text}`))
+      fetch(encodeURI(`https://jpsearch.go.jp/api/item/search/jps-cross?f-contents=thumb&keyword=${this.search_text}`))
       .then( response => {
         return response.json()
       })
@@ -58,7 +59,5 @@ export default {
       collections: {},
     }
   }
-=======
->>>>>>> f415957e76aeedc20af1660e66de4c2daa46ab62
 }
 </script>
