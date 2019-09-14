@@ -1,12 +1,20 @@
 <template>
   <div class="home">
     <Logo msg="収蔵品バトラー"/>
-    <TextInput title_text="検索キーワード"/>
-    <SearchButton text="検索する"/>
+    <!-- <TextInput title_text="検索キーワード"/> -->
+    <input v-model="title_text" placeholder="edit me">
+    <!-- <p>title_text is: {{ title_text }}</p> -->
+    <!-- <SearchButton text="検索する"/> -->
+    <button v-on:click="fetchCollections">検索する</button>
+    <!-- <p>{{collections}}</p> -->
     <ButtonGreen text="Go!"/>
+    <ul id="v-for-object" class="demo">
+      <li v-for="value in collections">
+        {{ value }}
+      </li>
+    </ul>
+
     <BattlerIconSet icon_title="持統天皇"/>
-    <input v-model="message" placeholder="edit me">
-    <p>Message is: {{ message }}</p>
  </div>
 </template>
 
@@ -26,9 +34,26 @@ export default {
     SearchButton,
     BattlerIconSet
   },
+  methods: {
+    fetchCollections: function(){
+      console.log('run methods');
+      fetch(encodeURI(`https://jpsearch.go.jp/api/item/search/jps-cross?keyword=${this.search_text}`))
+      .then( response => {
+        return response.json()
+      })
+      .then( json => {
+        console.log(json.list)
+        this.collections = json.list
+      })
+      .catch( (err) => {
+        this.collections = err
+      })
+    },
+  },
   data() {
     return {
-      message: "hoge"
+      title_text: "",
+      collections: {},
     }
   }
 }
