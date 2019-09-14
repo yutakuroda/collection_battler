@@ -5,6 +5,8 @@
     <SearchButton text="検索する"/>
     <ButtonGreen text="Go!"/>
     <BattlerIconSet icon_title="持統天皇"/>
+    <input v-model="message" placeholder="edit me">
+    <p>Message is: {{ message }}</p>
  </div>
 </template>
 
@@ -23,6 +25,11 @@ export default {
     ButtonGreen,
     SearchButton,
     BattlerIconSet
+  },
+  data() {
+    return {
+      message: "hoge"
+    }
   }
 }
 </script>
