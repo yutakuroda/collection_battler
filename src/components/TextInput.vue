@@ -33,7 +33,7 @@ export default {
   font-size: 12px;
 }
 .input {
-  width: 100%;
+  width: 300px;
   height: 30px;
   border-radius: 10px;
   border: solid 1px #555555;
