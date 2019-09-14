@@ -4,7 +4,8 @@
     <TextInput title_text="検索キーワード"/>
     <SearchButton text="検索する"/>
     <ButtonGreen text="Go!"/>
-  </div>
+    <BattlerIconSet icon_title="持統天皇"/>
+ </div>
 </template>
 
 <script>
@@ -13,13 +14,15 @@ import Logo from '@/components/Logo.vue'
 import TextInput from '@/components/TextInput.vue'
 import ButtonGreen from '@/components/ButtonGreen.vue'
 import SearchButton from '@/components/SearchButton.vue'
+import BattlerIconSet from '@/components/BattlerIconSet.vue'
 export default {
   name: 'home',
   components: {
     Logo,
     TextInput,
     ButtonGreen,
-    SearchButton
+    SearchButton,
+    BattlerIconSet
   }
 }
 </script>
