@@ -4,9 +4,7 @@
     <TextInput title_text="検索キーワード"/>
     <SearchButton text="検索する"/>
     <ButtonGreen text="Go!"/>
-    <BattlerIconSet icon_title="持統天皇"/>
-    <input v-model="message" placeholder="edit me">
-    <p>Message is: {{ message }}</p>
+    <BattlerIconSet url="https://colbase.nich.go.jp/uploads/collection_item_images/thumbnail/3c044d87c6b4a243aff2b469d72c8495.jpg" icon_title="持統天皇"/>
  </div>
 </template>
 
@@ -26,10 +24,5 @@ export default {
     SearchButton,
     BattlerIconSet
   },
-  data() {
-    return {
-      message: "hoge"
-    }
-  }
 }
 </script>

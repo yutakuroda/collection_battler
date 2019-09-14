@@ -1,6 +1,6 @@
 <template>
   <div class="battler_icon_set">
-    <img class="img" alt="" src="../assets/Jitoutennou.jpg" width="200px" height="200px">
+<img class="img" alt="" :src="url" width="200px" height="200px"/>
     <span class="icon_title">{{ icon_title }}</span>
   </div>
 </template>
@@ -9,8 +9,14 @@
 export default {
   name: 'BattlerIconzset',
   props: {
-    icon_title: String
-  }
+    icon_title: String,
+    url: String
+  },
+  methods: {
+    loadImg() {
+      return require('../assets/Jitoutennou.jpg');
+    }
+  },
 }
 </script>
 
