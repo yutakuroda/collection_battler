@@ -94,13 +94,27 @@ export default {
 }
 </script>
 <style>
-.demo{
-  list-style: none;
-}
-input[type="radio"] {
-  display: none;
-}
-input[type="radio"]:checked + label {
-  color: orange;
-}
+  body {
+    margin: 0;
+    padding: 2rem;
+  }
+  input[type="radio"] {
+    display: none;
+  }
+  input[type="radio"]:checked + label {
+    color: orange;
+  }
+  ul {
+    display: grid;
+    list-style: none;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding-left: 0;
+    li {
+      list-style: none;
+      padding: 0.5rem;
+
+    }
+  }
+
 </style>
