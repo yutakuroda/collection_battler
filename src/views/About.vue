@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="about">
-      <h1>Aの勝ち!</h1>
+      <h1>{{collection.common.title}}の勝ち!</h1>
+      <p>{{collection}}</p>
     </div>
 
     <router-link to="/">Back to Home</router-link>
@@ -12,20 +13,19 @@
 export default{
   name: 'about',
   methods: {
-    fetchOne: function(){
-      const query = location.search
-      fetch(encodeURI(`https://jpsearch.go.jp/api/item/search/jps-cross${query}`))
-      .then( response => {
-        return response.json()
-      })
-      .then( json => {
-        console.log(json.list)
-        this.collections = json.list
-      })
-      .catch( (err) => {
-        this.collections = err
-      })
-    }
+  },
+  created() {
+    fetch(encodeURI(`https://jpsearch.go.jp/api/item/cobas-38057`))
+    .then( response => {
+      return response.json()
+    })
+    .then( json => {
+      console.log(this)
+      this.collection = json
+    })
+    .catch( (err) => {
+      this.collection = err
+    })
   },
   data() {
     return {
