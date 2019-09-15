@@ -18,8 +18,44 @@
       <!-- <p>{{collection}}</p> -->
     </div>
     <div class="back">
-      <router-link to="/">Back to Home</router-link>
     </div>
+    <div class="win_type_img">
+      <div v-if="type === '総起'">
+        <img src="../assets/souki.jpg"/>
+      </div>
+      <div v-else-if="type == '哲学'">
+        <img src="../assets/tetsugaku.png"/>
+      </div>
+      <div v-else-if="type == '歴史'">
+        <img src="../assets/rekishi.png"/>
+      </div>
+      <div v-else-if="type == '社会化学'">
+        <img src="../assets/syakaikagaku.jpg"/>
+      </div>
+      <div v-else-if="type == '自然科学'">
+        <img src="../assets/shizennkagaku.jpg"/>
+      </div>
+      <div v-else-if="type == '技術工学'">
+        <img src="../assets/gijutu.jpg"/>
+      </div>
+      <div v-else-if="type == '産業'">
+        <img src="../assets/sangyou.jpg"/>
+      </div>
+      <div v-else-if="type == '芸術'">
+        <img src="../assets/geijutsu.png"/>
+      </div>
+      <div v-else-if="type == '言語'">
+        <img src="../assets/gengo.png"/>
+      </div>
+      <div v-else-if="type == '文学'">
+        <img src="../assets/bungaku.png"/>
+      </div>
+      <div v-else>
+        該当するtypeがありません
+      </div>
+    </div>
+
+    <router-link to="/">Back to Home</router-link>
   </div>
 </template>
 
@@ -108,5 +144,8 @@ h1:before {
     font-size: 200%;
     text-align: center;
 }
-
+.win_type_img img {
+  width: 300px;
+  height: 300px;
+}
 </style>
