@@ -3,13 +3,10 @@
     <Logo msg="収蔵品バトラー"/>
     <div class="first_container">
       <!-- <TextInput title_text="検索キーワード" search_text="search_text"/> -->
-      <input v-model="search_text" placeholder="edit me">
+      <input v-model="first_search_text" placeholder="edit me">
       <!-- <p>title_text is: {{ title_text }}</p> -->
       <!-- <SearchButton text="検索する"/> -->
-      <button v-on:click="fetchCollections">検索する</button>
-      <router-link to="/about">
-        <ButtonGreen text="戦闘開始!"/>
-      </router-link>
+      <button v-on:click="fetchCollections('first')">検索する</button>
       <ul id="v-for-object" class="demo">
         <li v-for="value in first_collections">
           <input :id="value.id" type="radio" name="rate" :value="value" v-model="first_picked">
@@ -22,13 +19,10 @@
     </div>
     <div class="second_container">
       <!-- <TextInput title_text="検索キーワード" search_text="search_text"/> -->
-      <input v-model="search_text" placeholder="edit me">
+      <input v-model="second_search_text" placeholder="edit me">
       <!-- <p>title_text is: {{ title_text }}</p> -->
       <!-- <SearchButton text="検索する"/> -->
-      <button v-on:click="fetchCollections">検索する</button>
-      <router-link to="/about">
-        <ButtonGreen text="戦闘開始!"/>
-      </router-link>
+      <button v-on:click="fetchCollections('second')">検索する</button>
       <ul id="v-for-object" class="demo">
         <li v-for="value in second_collections">
           <input :id="value.id" type="radio" name="rate" :value="value" v-model="second_picked">
@@ -39,6 +33,9 @@
       </ul>
       <p>{{second_picked}}</p>
     </div>
+    <router-link to="/about">
+      <ButtonGreen text="戦闘開始!"/>
+    </router-link>
  </div>
 </template>
 
@@ -60,21 +57,31 @@ export default {
   },
   methods: {
     fetchCollections: function(order){
-      fetch(encodeURI(`https://jpsearch.go.jp/api/item/search/jps-cross?f-contents=thumb&fc-db=-dignl&keyword=${this.search_text}`))
-      .then( response => {
-        return response.json()
-      })
-      .then( json => {
-        console.log(json.list)
-        if (order === "first") {
+      if (order === "first") {
+        fetch(encodeURI(`https://jpsearch.go.jp/api/item/search/jps-cross?f-contents=thumb&fc-db=-dignl&keyword=${this.first_search_text}`))
+        .then( response => {
+          return response.json()
+        })
+        .then( json => {
+          console.log(json.list)
           this.first_collections = json.list
-        } else if (order === "second") {
+        })
+        .catch( (err) => {
+          this.collections = err
+        })
+      } else if (order === "second") {
+        fetch(encodeURI(`https://jpsearch.go.jp/api/item/search/jps-cross?f-contents=thumb&fc-db=-dignl&keyword=${this.second_search_text}`))
+        .then( response => {
+          return response.json()
+        })
+        .then( json => {
+          console.log(json.list)
           this.second_collections = json.list
-        }
-      })
-      .catch( (err) => {
-        this.collections = err
-      })
+        })
+        .catch( (err) => {
+          this.collections = err
+        })
+      }
     },
     // pickCollection: function(id, order){
     //   if (order === 'first'){
@@ -84,11 +91,12 @@ export default {
   },
   data() {
     return {
-      search_text: "",
+      first_search_text: "",
       first_collections: {},
       first_picked: "",
+      second_search_text: "",
       second_collections: {},
-      second_picker: "",
+      second_picked: "",
     }
   }
 }
