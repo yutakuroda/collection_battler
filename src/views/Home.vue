@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <Logo msg="収蔵品バトラー"/>
-    <!-- <TextInput title_text="検索キーワード"/> -->
-    <input v-model="title_text" placeholder="edit me">
+    <!-- <TextInput title_text="検索キーワード" search_text="search_text"/> -->
+    <input v-model="search_text" placeholder="edit me">
     <!-- <p>title_text is: {{ title_text }}</p> -->
     <!-- <SearchButton text="検索する"/> -->
     <button v-on:click="fetchCollections">検索する</button>
@@ -40,10 +40,7 @@ export default {
   },
   methods: {
     fetchCollections: function(){
-      // const debugurl = `https://jpsearch.go.jp/api/item/search/jps-cross?f-contents=thumb&keyword=${this.search_text}`
-      // console.log(debugurl);
       fetch(encodeURI(`https://jpsearch.go.jp/api/item/search/jps-cross?f-contents=thumb&fc-db=-dignl&keyword=${this.search_text}`))
-      // fetch(encodeURI(`https://jpsearch.go.jp/api/item/search/jps-cross?keyword=${this.search_text}`))
       .then( response => {
         return response.json()
       })
