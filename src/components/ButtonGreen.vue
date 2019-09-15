@@ -28,5 +28,6 @@ export default {
 
   font-size: 40px;
   margin: auto;
+  margin-top: 30px;
 }
 </style>
