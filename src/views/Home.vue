@@ -11,7 +11,10 @@
     <ul id="v-for-object" class="demo">
       <li v-for="value in collections">
         <!-- {{ value }} -->
-        <BattlerIconSet :url="value.common.thumbnailUrl" :icon_title="value.common.title" />
+         <input :id="value.id" type="radio" name="rate" value="a">
+          <label :for="value.id">
+           <BattlerIconSet :url="value.common.thumbnailUrl" :icon_title="value.common.title" />
+          </label>
         <!-- <p>{{value.common}}</p> -->
         <!-- <BattlerIconSet url="http://dl.ndl.go.jp/titleThumb/info:ndljp/pid/2540649" icon_title="ほげ"/> -->
       </li>
@@ -61,3 +64,11 @@ export default {
   }
 }
 </script>
+<style>
+input[type="radio"] {
+  display: none;
+}
+input[type="radio"]:checked + label {
+  color: orange;
+}
+</style>
