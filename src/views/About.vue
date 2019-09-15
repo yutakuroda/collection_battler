@@ -10,13 +10,16 @@
       <div class="fireback">
       <h1>{{collection.common.title}}の勝ち!</h1>
       </div>
+      <div class="winner_img">
       <WinnerIconSet :icon_title="collection.common.title" :url="collection.common.thumbnailUrl" />
       <p>属性(NDC):{{type}}</p>
       <p>戦闘力:{{power}}</p>
+      </div>
       <!-- <p>{{collection}}</p> -->
     </div>
-
-    <router-link to="/">Back to Home</router-link>
+    <div class="back">
+      <router-link to="/">Back to Home</router-link>
+    </div>
   </div>
 </template>
 
@@ -83,7 +86,13 @@ h1 {
   line-height: 1.3;
   z-index:-1;
 }
-
+.back {
+  margin-top: 200px;
+}
+.winner_img img {
+  width: 600px;
+  height: 600px;
+}
 h1:before {
   position: absolute;
   content: '';
