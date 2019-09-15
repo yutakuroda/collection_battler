@@ -6,22 +6,16 @@
     <!-- <p>title_text is: {{ title_text }}</p> -->
     <!-- <SearchButton text="検索する"/> -->
     <button v-on:click="fetchCollections">検索する</button>
-    <!-- <p>{{collections}}</p> -->
     <ButtonGreen text="Go!"/>
     <ul id="v-for-object" class="demo">
       <li v-for="value in collections">
-        <!-- {{ value }} -->
-         <input :id="value.id" type="radio" name="rate" value="a">
+         <input :id="value.id" type="radio" name="rate" :value="value.id" v-model="first_picked">
           <label :for="value.id">
            <BattlerIconSet :url="value.common.thumbnailUrl" :icon_title="value.common.title" />
           </label>
-        <!-- <p>{{value.common}}</p> -->
-        <!-- <BattlerIconSet url="http://dl.ndl.go.jp/titleThumb/info:ndljp/pid/2540649" icon_title="ほげ"/> -->
       </li>
     </ul>
-
-    <!-- <BattlerIconSet icon_title="持統天皇"/> -->
-    <!-- <BattlerIconSet url="https://colbase.nich.go.jp/uploads/collection_item_images/thumbnail/3c044d87c6b4a243aff2b469d72c8495.jpg" icon_title="持統天皇"/> -->
+    <p>{{first_picked}}</p>
  </div>
 </template>
 
@@ -60,11 +54,16 @@ export default {
     return {
       search_text: "",
       collections: {},
+      first_picked: "",
+      second_picker: "",
     }
   }
 }
 </script>
 <style>
+.demo{
+  list-style: none;
+}
 input[type="radio"] {
   display: none;
 }
