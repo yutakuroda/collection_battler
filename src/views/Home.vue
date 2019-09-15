@@ -1,23 +1,44 @@
 <template>
   <div class="home">
     <Logo msg="収蔵品バトラー"/>
-    <!-- <TextInput title_text="検索キーワード" search_text="search_text"/> -->
-    <input v-model="search_text" placeholder="edit me">
-    <!-- <p>title_text is: {{ title_text }}</p> -->
-    <!-- <SearchButton text="検索する"/> -->
-    <button v-on:click="fetchCollections">検索する</button>
-    <router-link to="/about">
-      <ButtonGreen text="戦闘開始!"/>
-    </router-link>
-    <ul id="v-for-object" class="demo">
-      <li v-for="value in collections">
-         <input :id="value.id" type="radio" name="rate" :value="value.id" v-model="first_picked">
-          <label :for="value.id">
-           <BattlerIconSet :url="value.common.thumbnailUrl" :icon_title="value.common.title" />
-          </label>
-      </li>
-    </ul>
-    <p>{{first_picked}}</p>
+    <div class="first_container">
+      <!-- <TextInput title_text="検索キーワード" search_text="search_text"/> -->
+      <input v-model="search_text" placeholder="edit me">
+      <!-- <p>title_text is: {{ title_text }}</p> -->
+      <!-- <SearchButton text="検索する"/> -->
+      <button v-on:click="fetchCollections">検索する</button>
+      <router-link to="/about">
+        <ButtonGreen text="戦闘開始!"/>
+      </router-link>
+      <ul id="v-for-object" class="demo">
+        <li v-for="value in first_collections">
+          <input :id="value.id" type="radio" name="rate" :value="value" v-model="first_picked">
+            <label :for="value.id">
+            <BattlerIconSet :url="value.common.thumbnailUrl" :icon_title="value.common.title" />
+            </label>
+        </li>
+      </ul>
+      <p>{{first_picked}}</p>
+    </div>
+    <div class="second_container">
+      <!-- <TextInput title_text="検索キーワード" search_text="search_text"/> -->
+      <input v-model="search_text" placeholder="edit me">
+      <!-- <p>title_text is: {{ title_text }}</p> -->
+      <!-- <SearchButton text="検索する"/> -->
+      <button v-on:click="fetchCollections">検索する</button>
+      <router-link to="/about">
+        <ButtonGreen text="戦闘開始!"/>
+      </router-link>
+      <ul id="v-for-object" class="demo">
+        <li v-for="value in second_collections">
+          <input :id="value.id" type="radio" name="rate" :value="value" v-model="second_picked">
+            <label :for="value.id">
+            <BattlerIconSet :url="value.common.thumbnailUrl" :icon_title="value.common.title" />
+            </label>
+        </li>
+      </ul>
+      <p>{{second_picked}}</p>
+    </div>
  </div>
 </template>
 
@@ -38,25 +59,35 @@ export default {
     BattlerIconSet
   },
   methods: {
-    fetchCollections: function(){
+    fetchCollections: function(order){
       fetch(encodeURI(`https://jpsearch.go.jp/api/item/search/jps-cross?f-contents=thumb&fc-db=-dignl&keyword=${this.search_text}`))
       .then( response => {
         return response.json()
       })
       .then( json => {
         console.log(json.list)
-        this.collections = json.list
+        if (order === "first") {
+          this.first_collections = json.list
+        } else if (order === "second") {
+          this.second_collections = json.list
+        }
       })
       .catch( (err) => {
         this.collections = err
       })
     },
+    // pickCollection: function(id, order){
+    //   if (order === 'first'){
+    //     this.first_picked = this.collections.
+    //   }
+    // }
   },
   data() {
     return {
       search_text: "",
-      collections: {},
+      first_collections: {},
       first_picked: "",
+      second_collections: {},
       second_picker: "",
     }
   }
