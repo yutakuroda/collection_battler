@@ -1,12 +1,14 @@
 <template>
   <div class="home">
     <Logo msg="収蔵品バトラー"/>
+    <div class="parent_flex">
     <div class="first_container">
       <!-- <TextInput title_text="検索キーワード" search_text="search_text"/> -->
-      <input v-model="first_search_text" placeholder="edit me">
+      <p>Player A</p>
+      <input class="search_form" v-model="first_search_text" placeholder="検索ワードを入力してください">
       <!-- <p>title_text is: {{ title_text }}</p> -->
       <!-- <SearchButton text="検索する"/> -->
-      <button v-on:click="fetchCollections('first')">検索する</button>
+      <button class="search_button" v-on:click="fetchCollections('first')">検索する</button>
       <ul id="v-for-object" class="demo">
         <li v-for="value in first_collections">
           <input :id="value.id" type="radio" name="rate" :value="value" v-model="first_picked">
@@ -19,10 +21,12 @@
     </div>
     <div class="second_container">
       <!-- <TextInput title_text="検索キーワード" search_text="search_text"/> -->
-      <input v-model="second_search_text" placeholder="edit me">
+
+      <p>Player B</p>
+      <input class="search_form" v-model="second_search_text" placeholder="検索ワードを入力してください">
       <!-- <p>title_text is: {{ title_text }}</p> -->
       <!-- <SearchButton text="検索する"/> -->
-      <button v-on:click="fetchCollections('second')">検索する</button>
+      <button class="search_button" v-on:click="fetchCollections('second')">検索する</button>
       <ul id="v-for-object" class="demo">
         <li v-for="value in second_collections">
           <input :id="value.id" type="radio" name="rate" :value="value" v-model="second_picked">
@@ -32,6 +36,7 @@
         </li>
       </ul>
       <p>{{second_picked}}</p>
+    </div>
     </div>
     <router-link to="/about">
       <ButtonGreen text="戦闘開始"/>
@@ -97,9 +102,26 @@ export default {
 }
 </script>
 <style>
+  .parent-frex {
+    display: flex;
+  }
   body {
     margin: 0;
     padding: 2rem;
+  }
+  .search_form {
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+  }
+  .search_button {
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    background: #42b983;
+    color: #fff;
+    font-size: 16px;
+    margin-left: 10px;
   }
   input[type="radio"] {
     display: none;
