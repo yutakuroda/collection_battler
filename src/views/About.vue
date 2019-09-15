@@ -9,11 +9,11 @@
       <Logo class="" />
       <div class="fireback">
       <h1>{{collection.common.title}}の勝ち!</h1>
+      <h1>戦闘力{{power}}</h1>
       </div>
       <div class="winner_img">
       <WinnerIconSet :icon_title="collection.common.title" :url="collection.common.thumbnailUrl" />
-      <p>属性(NDC):{{type}}</p>
-      <p>戦闘力:{{power}}</p>
+      <p class="type">属性(NDC):{{type}}</p>
       </div>
       <!-- <p>{{collection}}</p> -->
     </div>
@@ -87,7 +87,7 @@ h1 {
   z-index:-1;
 }
 .back {
-  margin-top: 200px;
+  margin-top: 20px;
 }
 .winner_img img {
   width: 600px;
@@ -102,6 +102,11 @@ h1:before {
   border-left: solid 40px white;
   border-bottom: solid 79px transparent;
   z-index:-2
+}
+.power {
+    border-bottom: 3px solid #ff3333;
+    font-size: 200%;
+    text-align: center;
 }
 
 </style>
