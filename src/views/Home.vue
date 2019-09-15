@@ -83,11 +83,6 @@ export default {
         })
       }
     },
-    // pickCollection: function(id, order){
-    //   if (order === 'first'){
-    //     this.first_picked = this.collections.
-    //   }
-    // }
   },
   data() {
     return {
