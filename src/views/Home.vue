@@ -34,7 +34,7 @@
       <p>{{second_picked}}</p>
     </div>
     <router-link to="/about">
-      <ButtonGreen text="戦闘開始!"/>
+      <ButtonGreen text="戦闘開始"/>
     </router-link>
  </div>
 </template>
