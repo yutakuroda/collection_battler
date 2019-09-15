@@ -6,6 +6,8 @@
       <h1>{{collection.common.title}}の勝ち!</h1>
       </div>
       <WinnerIconSet :icon_title="collection.common.title" :url="collection.common.thumbnailUrl" />
+      <p>属性(NDC):{{type}}</p>
+      <p>戦闘力:{{power}}</p>
       <!-- <p>{{collection}}</p> -->
     </div>
 
@@ -25,10 +27,25 @@ export default{
   methods: {
   },
   created() {
-    const query = location.search.slice(1)
-    console.log(query)
-    fetch(encodeURI(`https://jpsearch.go.jp/api/item/${query}`))
-    // fetch(encodeURI(`https://jpsearch.go.jp/api/item/cobas-38057`))
+    const [type, power, id] = location.search.slice(1).split('&')
+    const type_table =
+    {
+      0:"総記",
+      1:"哲学",
+      2:"歴史",
+      3:"社会科学",
+      4:"自然科学",
+      5:"技術工学",
+      6:"産業",
+      7:"芸術",
+      8:"言語",
+      9:"文学",
+    };
+    this.type = type_table[type];
+
+
+    this.power = power * 10000
+    fetch(encodeURI(`https://jpsearch.go.jp/api/item/${id}`))
     .then( response => {
       return response.json()
     })
@@ -43,6 +60,8 @@ export default{
   data() {
     return {
       collection: {},
+      type: "",
+      power: 0,
     }
   }
 }

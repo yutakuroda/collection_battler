@@ -46,8 +46,8 @@ export default function(attack, defence, func) {
      res = a.power * type_table[a.type][d.type] > d.power ? true : false;
    }
    if (res) {
-     return a.id;
-   } else { return d.id; }
+     return a;
+   } else { return d; }
  };
  const attacker = {
    type: "",

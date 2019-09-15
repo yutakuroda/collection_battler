@@ -92,7 +92,10 @@ export default {
     },
     gotoAbout: function() {
       logic(this.first_picked, this.second_picked, (a, b, c) => {
-       this.$router.push(`/about?${c}`)
+        const id = c.id
+        const power = c.power
+        const type = c.type
+        this.$router.push(`/about?${id}&${power}&${type}`)
       });
     }
   },
