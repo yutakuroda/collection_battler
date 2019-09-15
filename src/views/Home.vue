@@ -6,7 +6,9 @@
     <!-- <p>title_text is: {{ title_text }}</p> -->
     <!-- <SearchButton text="検索する"/> -->
     <button v-on:click="fetchCollections">検索する</button>
-    <ButtonGreen text="Go!"/>
+    <router-link to="/about">
+      <ButtonGreen text="戦闘開始!"/>
+    </router-link>
     <ul id="v-for-object" class="demo">
       <li v-for="value in collections">
          <input :id="value.id" type="radio" name="rate" :value="value.id" v-model="first_picked">
