@@ -7,7 +7,7 @@
     <!-- <SearchButton text="検索する"/> -->
     <button v-on:click="fetchCollections">検索する</button>
     <router-link to="/about">
-      <ButtonGreen text="戦闘開始!"/>
+      <ButtonGreen text="戦闘開始"/>
     </router-link>
     <ul id="v-for-object" class="demo">
       <li v-for="value in collections">

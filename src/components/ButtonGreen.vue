@@ -16,12 +16,17 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .button_two_column_green {
-  width: 250px;
-  height: 50px;
+  width: 500px;
+  height: 100px;
   border-radius: 10px;
-  background-color: #16A6B6;
+  background-color: #e64f04;
   color: #ffffff;
-  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'monospace';
+  letter-spacing: 20px;
+
+  font-size: 40px;
   margin: auto;
 }
 </style>
