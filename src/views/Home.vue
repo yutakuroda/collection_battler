@@ -41,7 +41,7 @@
       </ul>
     </div>
     </div>
-    <Button @click="gotoAbout">戦闘開始</Button>
+    <Button class="button_buttle" @click="gotoAbout">戦闘開始</Button>
   </div>
 </template>
 
@@ -118,6 +118,21 @@ export default {
   body {
     margin: 0;
     padding: 2rem;
+  }
+  .button_buttle {
+      width: 500px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #e64f04;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'monospace';
+  letter-spacing: 20px;
+
+  font-size: 40px;
+  margin: auto;
+  margin-top: 30px;
   }
   .vs {
     font-size: 50px;

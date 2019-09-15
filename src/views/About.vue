@@ -1,5 +1,10 @@
 <template>
   <div>
+
+    <audio autoplay loop>
+      <source src="../assets/victory.mp3">
+  あなたのブラウザーは <code>audio</code> 要素をサポートしていません。
+    </audio>
     <div class="about">
       <Logo class="" />
       <div class="fireback">
