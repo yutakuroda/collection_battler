@@ -2,10 +2,7 @@
   <div class="home">
     <Logo msg="収蔵品バトラー"/>
     <div class="first_container">
-      <!-- <TextInput title_text="検索キーワード" search_text="search_text"/> -->
-      <input v-model="first_search_text" placeholder="edit me">
-      <!-- <p>title_text is: {{ title_text }}</p> -->
-      <!-- <SearchButton text="検索する"/> -->
+      <input class="search_text_box" v-model="first_search_text" placeholder="edit me">
       <button v-on:click="fetchCollections('first')">検索する</button>
       <ul id="v-for-object" class="demo">
         <li v-for="value in first_collections">
@@ -19,7 +16,7 @@
     </div>
     <div class="second_container">
       <!-- <TextInput title_text="検索キーワード" search_text="search_text"/> -->
-      <input v-model="second_search_text" placeholder="edit me">
+      <input class="search_text_box" v-model="second_search_text" placeholder="edit me">
       <!-- <p>title_text is: {{ title_text }}</p> -->
       <!-- <SearchButton text="検索する"/> -->
       <button v-on:click="fetchCollections('second')">検索する</button>
@@ -33,9 +30,10 @@
       </ul>
       <p>{{second_picked}}</p>
     </div>
-    <router-link to="/about">
+    <!-- <router-link to="/about">
       <ButtonGreen text="戦闘開始"/>
-    </router-link>
+    </router-link> -->
+    <Button @click="gotoAbout">戦闘開始</Button>
  </div>
 </template>
 
@@ -46,6 +44,7 @@ import TextInput from '@/components/TextInput.vue'
 import ButtonGreen from '@/components/ButtonGreen.vue'
 import SearchButton from '@/components/SearchButton.vue'
 import BattlerIconSet from '@/components/BattlerIconSet.vue'
+import logic from '../helper/logic.js'
 export default {
   name: 'home',
   components: {
@@ -83,6 +82,11 @@ export default {
         })
       }
     },
+    gotoAbout: function() {
+      logic(this.first_picked, this.second_picked, (a, b, c) => {
+       this.$router.push(`/about?${c}`)
+      });
+    }
   },
   data() {
     return {

@@ -1,5 +1,5 @@
 <template>
-<figure class="battler_icon_set">
+<figure class="winner_icon_set">
   <img class="img" alt="" :src="url" />
   <figcaption class="icon_title">{{ icon_title }}</figcaption>
 </figure>
@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'BattlerIconzset',
+  name: 'WinnerIconzset',
   props: {
     icon_title: String,
     url: String
@@ -18,11 +18,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .btn{
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
 }
 figure {
-  width: 100%;
+  /* width: 100%; */
   text-align: center;
   position: relative;
   overflow: hidden;

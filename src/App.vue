@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <Logo msg="収蔵品バトラー"/>
-    </div>
+    <Logo msg="収蔵品バトラー"/>
     <router-view/>
   </div>
 </template>
