@@ -21,7 +21,6 @@
             </label>
         </li>
       </ul>
-      <p>{{first_picked}}</p>
     </div>
     <p class="vs">VS</p>
     <div class="second_container">
@@ -40,10 +39,10 @@
             </label>
         </li>
       </ul>
-      <p>{{second_picked}}</p>
+    </div>
     </div>
     <Button @click="gotoAbout">戦闘開始</Button>
- </div>
+  </div>
 </template>
 
 <script>
