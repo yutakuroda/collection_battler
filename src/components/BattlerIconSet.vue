@@ -1,8 +1,8 @@
 <template>
-  <div class="battler_icon_set">
-<img class="img" alt="" :src="url" width="200px" height="200px"/>
-    <span class="icon_title">{{ icon_title }}</span>
-  </div>
+<figure class="battler_icon_set">
+  <img class="img" alt="" :src="url" />
+  <figcaption class="icon_title">{{ icon_title }}</figcaption>
+</figure>
 </template>
 
 <script>
@@ -22,21 +22,28 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.battler_icon_set {
-  width: 200px;
-  position: relative;
-  }
 .btn{
   width: 200px;
   height: 200px;
 }
-.icon_title {
-  width: 200px;
-  line-height: 30px;
-  vertical-align: middle;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: #eee;
+figure {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
+  .icon_title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
 </style>
