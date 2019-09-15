@@ -18,4 +18,7 @@ export default {
 h1 {
   color: #16A6B6;
 }
+.logo {
+  margin-bottom: 30px;
+  }
 </style>
